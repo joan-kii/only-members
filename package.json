@@ -1,0 +1,37 @@
+{
+  "name": "only-members",
+  "version": "1.0.0",
+  "description": "chat for members",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=only-members:* npm run devstart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joan-kii/only-members.git"
+  },
+  "author": "joankii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joan-kii/only-members/issues"
+  },
+  "homepage": "https://github.com/joan-kii/only-members#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.12.2",
+    "helmet": "^4.6.0",
+    "mongoose": "^6.0.9",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
+  }
+}
