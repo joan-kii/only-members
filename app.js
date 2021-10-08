@@ -38,6 +38,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
 // Error
 
 app.use(function(req, res, next) {
