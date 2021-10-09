@@ -1,0 +1,36 @@
+<%- include('../partials/header'); %>
+<main class="relative">
+  <div class="container mx-auto mt-20 mb-5 p-6 w-2/4 bg-gray-100 shadow-2xl rounded ring ring-inset ring-yellow-200"">
+    <form method="POST" action="">
+      <div class="mb-3 flex flex-col items-center">
+        <h2 class="mb-3 font-bold text-xl text-yellow-400">
+          Sign Up
+        </h2>
+        <div class="mb-12 w-3/4">
+          <label for="firstName" class="mb-3 block">First Name</label>
+          <input type="text" id="firstName" name="firstName" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
+        </div>
+        <div class="mb-12 w-3/4">
+          <label for="secondName" class="mb-3 block">Second Name</label>
+          <input type="text" id="secondName" name="secondName" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
+        </div>
+        <div class="mb-12 w-3/4">
+          <label for="userName" class="mb-3 block">User Name</label>
+          <input type="text" id="userName" name="userName" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
+        </div>
+        <div class="mb-12 w-3/4">
+          <label for="password" class="mb-3 block">Password</label>
+          <input type="password" id="password" name="password" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
+        </div>
+        <div class="mb-12 w-3/4">
+          <label for="confirmPassword" class="mb-3 block">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
+        </div>
+        <div class="relative mb-12 w-3/4">
+          <button type="submit" class="absolute ml-4 py-2 px-4 right-0 font-bold text-gray-500 bg-yellow-300 hover:bg-opacity-60 hover:text-gray-600 hover:border-gray-600 rounded ring-2 ring-inset ring-gray-500">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+<%- include('../partials/footer'); %>

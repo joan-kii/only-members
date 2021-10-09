@@ -39,13 +39,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
-  res.render('signup');
+  res.render('signup-form');
 });
 
 // Error
 
 app.use(function(req, res, next) {
+  console.log('error')
   next(createError(404));
+});
+
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  console.log(err);
+  res.render('index', {message: 'Page not found.'});
 });
 
 app.listen(3000, () => console.log('App listeninig on port 3000!'));
