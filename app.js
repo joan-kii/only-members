@@ -9,6 +9,8 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 
+const indexRouter = require('./routes/index');
+
 require('dotenv').config();
 
 const app = express();
@@ -32,20 +34,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false}));
 
-// Routes
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('/signup', (req, res) => {
-  res.render('signup-form');
-});
+app.use('/', indexRouter);
 
 // Error
 
 app.use(function(req, res, next) {
-  console.log('error')
   next(createError(404));
 });
 
