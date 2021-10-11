@@ -14,6 +14,15 @@ router.get('/', home_controller.home_page);
 router.get('/signup', user_controller.user_create_get);
 router.post('/signup', user_controller.user_create_post);
 
+// Log In User
+
+router.get('/login', user_controller.user_login_get);
+router.post('/login', user_controller.user_login_post);
+
+// Log Out User
+
+router.get('/logout', user_controller.user_logout_get);
+
 // Create Message
 
 router.get('/message', message_controller.message_create_get);

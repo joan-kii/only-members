@@ -2,6 +2,9 @@ const User = require('../models/userModel');
 
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
+
+// Create User
 
 exports.user_create_get = function(req, res, next) {
   res.render('signup-form');
@@ -47,3 +50,20 @@ exports.user_create_post = [
   }
 ];
 
+// Log In User
+
+exports.user_login_get = function(req, res, next) {
+  res.render('login-form');
+};
+
+exports.user_login_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/'
+});
+
+// Log Out User
+
+exports.user_logout_get = function(req, res, next) {
+  req.logout();
+  res.redirect('/');
+};

@@ -1,8 +1,11 @@
 <%- include('../partials/header'); %>
 <main class="relative flex-1">
   <div>
-    <div>
-    </div>
+    <% if (currentUser) { %>
+      <p><%= currentUser %></p>
+    <% } else { %>
+      <p>LOL</p>
+    <% } %>
   </div>
 </main>
 <%- include('../partials/footer'); %>

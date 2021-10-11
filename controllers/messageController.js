@@ -6,7 +6,7 @@ exports.message_create_get = function(req, res, next) {
   res.render('message-form');
 };
 
-exports.user_create_post = [
+exports.message_create_post = [
     body('title', 'Title Required')
         .trim()
         .isLength({min: 1})
@@ -16,7 +16,6 @@ exports.user_create_post = [
         .isLength({min: 1})
         .escape(),
     (req, res, next) => {
-      if (err) return next(err);
       const errors = validationResult(req);
       const message = new Message({
         title: req.body.title,
