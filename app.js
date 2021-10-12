@@ -8,7 +8,6 @@ const compression = require('compression');
 const helmet = require('helmet');
 const createError = require('http-errors');
 const bcrypt = require('bcryptjs');
-const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const User = require('./models/userModel');
@@ -60,13 +59,9 @@ app.use(session({ secret: process.env.SESSION_SECRET || 'cats', resave: false, s
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false}));
-app.use(flash());
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
-  if (res.locals.currentUser) {
-    res.locals.messageSuccess = req.session.flash.success[0];
-  }
   next();
 });
 

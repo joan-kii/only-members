@@ -21,7 +21,7 @@ exports.message_create_post = [
         title: req.body.title,
         message: req.body.message,
         created: Date.now(),
-        author: false
+        author: res.locals.currentUser.userName
       }).save(err => {
         if (err) return next(err);
         res.redirect('/');

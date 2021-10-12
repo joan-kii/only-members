@@ -3,6 +3,7 @@ const User = require('../models/userModel');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const mongoose = require('mongoose');
 
 // Create User
 
@@ -59,8 +60,6 @@ exports.user_login_get = function(req, res, next) {
 exports.user_login_post = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
-  successFlash: 'Welcome', 
-  failureFlash: 'User Name or Password invalid.'
 });
 
 // Log Out User
@@ -69,3 +68,26 @@ exports.user_logout_get = function(req, res, next) {
   req.logout();
   res.redirect('/');
 };
+
+// Membership
+
+exports.user_membership_get = function(req, res, next) {
+  res.render('membership-form');
+};
+
+exports.user_membership_post = [
+  body('accessKey', 'Access Key required')
+  .trim()
+  .isLength({min: 1})
+  .escape()
+  .custom((value, { req }) => value === process.env.MEMBERSHIP_KEY),
+  (req, res, next) => {
+    let id = mongoose.Types.ObjectId(res.locals.currentUser._id);
+    User.findByIdAndUpdate({ _id: id }, { status: true }, function(err, result) {
+        if (err) return next(err);
+        console.log('LOL')
+        res.redirect('/');
+      }
+    )
+  }
+];

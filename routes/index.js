@@ -23,6 +23,11 @@ router.post('/login', user_controller.user_login_post);
 
 router.get('/logout', user_controller.user_logout_get);
 
+// Membership
+
+router.get('/membership', user_controller.user_membership_get);
+router.post('/membership', user_controller.user_membership_post);
+
 // Create Message
 
 router.get('/message', message_controller.message_create_get);

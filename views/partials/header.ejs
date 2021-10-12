@@ -9,6 +9,9 @@
       <nav class="absolute right-20 w-25">
         <% if (currentUser) { %>
           <a href="/message" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Write Message</a>
+          <% if (currentUser.status === false) { %> 
+            <a href="/membership" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Become a Member</a>
+          <% } %>
           <a href="/logout" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Log Out</a>
         <% } else { %>
           <a href="/signup" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Sign Up</a>
