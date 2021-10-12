@@ -7,9 +7,12 @@
     <header class="fixed top-0 h-16 z-10 w-full flex items-center bg-gray-500">
       <h1 class="ml-6 px-4 py-1 text-2xl font-bold text-yellow-300 hover:text-yellow-200 hover:border-yellow-100 hover:bg-gray-800 hover:bg-opacity-50 rounded ring ring-inset ring-yellow-200"><a href="/">Only Members</a></h1>
       <nav class="absolute right-20 w-25">
-        <a href="/message" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Write Message</a>
-        <a href="/signup" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Sign Up</a>
-        <a href="/login" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Log In</a>
-        <button class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Log Out</button>
+        <% if (currentUser) { %>
+          <a href="/message" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Write Message</a>
+          <a href="/logout" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Log Out</a>
+        <% } else { %>
+          <a href="/signup" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Sign Up</a>
+          <a href="/login" class="ml-4 py-2 px-4 font-bold text-yellow-300 bg-opacity-50 hover:bg-gray-800 hover:bg-opacity-50 hover:text-yellow-200 hover:border-yellow-100 rounded ring-2 ring-inset ring-yellow-200">Log In</a>
+        <% } %>
       </nav>
     </header>

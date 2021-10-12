@@ -6,22 +6,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const compression = require('compression');
 const helmet = require('helmet');
-const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const bcrypt = require('bcryptjs');
+const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const User = require('./models/userModel');
 
 require('dotenv').config();
-
-const app = express();
-
-app.set('views', path.join(__dirname, 'views/pages'));
-app.set('view engine', 'ejs');
-
-app.use(compression());
-app.use(helmet());
 
 // MongoDB connection
 
@@ -29,24 +21,26 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopo
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB Conection Error:'));
 
+const app = express();
+
+app.set('views', path.join(__dirname, 'views/pages'));
+app.set('view engine', 'ejs');
+
 app.use(express.json());
-app.use(cookieParser());
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.urlencoded({ extended: false}));
+app.use(compression());
+app.use(helmet());
 
 // Log in
 
 passport.use(
-  new LocalStrategy((userName, password, done) => {
-    User.findOne({userName: userName}, (err, user) => {
-      if (err) {return done(err)};
-      if(!user) {return done(null, false, {message: 'Incorrect User Name'})};
+  new LocalStrategy({usernameField: 'userName'}, (username, password, done) => {
+    User.findOne({userName: username}, (err, user) => {
+      if (err) {return done(err);}
+      if(!user) {return done(null, false, {message: 'Incorrect User Name'});}
       bcrypt.compare(password, user.password, (err, res) => {
-        console.log(user)
-        if (res) {return done(null, user)};
-        if (err) {return done(null, false, {message: 'Incorrect Password'})};
+        if (err) {return done(null, false, {message: 'Incorrect Password'});}
+        if (res) {return done(null, user);} 
+        else {return done(null, false, {message: 'Incorrect Password'})}
       });
     });
   })
@@ -62,8 +56,17 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+app.use(session({ secret: process.env.SESSION_SECRET || 'cats', resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false}));
+app.use(flash());
+
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  if (res.locals.currentUser) {
+    res.locals.messageSuccess = req.session.flash.success[0];
+  }
   next();
 });
 
