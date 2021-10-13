@@ -33,6 +33,10 @@ exports.user_create_post = [
       .isLength({min: 1})
       .escape()
       .custom((value, { req }) => value === req.body.password),
+  body('passcode')
+      .trim()
+      .isLength({min: 1})
+      .escape(),
   (req, res, next) => {
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
       if (err) return next(err);
@@ -42,7 +46,8 @@ exports.user_create_post = [
         secondName: req.body.secondName,
         userName: req.body.userName,
         password: hashedPassword,
-        status: false
+        status: false,
+        isAdmin: req.body.passcode === process.env.ADMIN_PASSCODE ? true : false
         }).save(err => {
           if (err) return next(err);
           res.redirect('/');
