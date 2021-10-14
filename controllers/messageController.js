@@ -28,3 +28,10 @@ exports.message_create_post = [
     });
   }
 ];
+
+exports.message_delete_post = function(req, res, next) {
+  Message.findByIdAndRemove(req.body.messageId, function(err, message) {
+    if (err) return next(err);
+    res.redirect('/');
+  })
+};

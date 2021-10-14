@@ -33,4 +33,8 @@ router.post('/membership', user_controller.user_membership_post);
 router.get('/message', message_controller.message_create_get);
 router.post('/message', message_controller.message_create_post);
 
+// Delete Message
+
+router.post('/', message_controller.message_delete_post);
+
 module.exports = router;
