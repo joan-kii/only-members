@@ -30,6 +30,9 @@
           <span class="mb-3 block">Are you an Admin? Enter the passcode.</span>
           <input type="password" id="passcode" name="passcode" class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
         </div>
+        <% if (error !== '') { %>
+          <p><%= error %></p>
+        <% } %> 
         <div class="relative mb-12 w-3/4">
           <button type="submit" class="absolute ml-4 py-2 px-4 right-0 font-bold text-gray-500 bg-yellow-300 hover:bg-opacity-60 hover:text-gray-600 hover:border-gray-600 rounded ring-2 ring-inset ring-gray-500">Sign Up</button>
         </div>

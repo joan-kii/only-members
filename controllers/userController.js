@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // Create User
 
 exports.user_create_get = function(req, res, next) {
-  res.render('signup-form');
+  res.render('signup-form', {error: ''});
 };
 
 exports.user_create_post = [
@@ -41,6 +41,7 @@ exports.user_create_post = [
     bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
       if (err) return next(err);
       const errors = validationResult(req);
+      if (!errors.isEmpty()) res.render('signup-form', {error: errors.array()})
       const user = new User({
         firstName: req.body.firstName,
         secondName: req.body.secondName,
@@ -49,7 +50,7 @@ exports.user_create_post = [
         status: false,
         isAdmin: req.body.passcode === process.env.ADMIN_PASSCODE ? true : false
         }).save(err => {
-          if (err) return next(err);
+          if (err) res.render('signup-form', {error: err});
           res.redirect('/');
       });
     })
