@@ -15,7 +15,7 @@
           <input type="text" id="secondName" name="secondName" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
         </div>
         <div class="mb-12 w-3/4">
-          <label for="userName" class="mb-3 block">User Name</label>
+          <label for="userName" class="mb-3 block">Username</label>
           <input type="text" id="userName" name="userName" required class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
         </div>
         <div class="mb-12 w-3/4">
@@ -30,10 +30,10 @@
           <span class="mb-3 block">Are you an Admin? Enter the passcode.</span>
           <input type="password" id="passcode" name="passcode" class="mt-0 block w-full px-0.5 bg-gray-100 border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
         </div>
-        <% if (error !== '') { %>
-          <p><%= error %></p>
-        <% } %> 
-        <div class="relative mb-12 w-3/4">
+        <div class="relative mb-12 w-3/4 flex">
+          <% if (error !== '') { %>
+            <p class="p-3 text-red-500 rounded ring ring-red-200"><%= error[0].msg %></p>
+          <% } %> 
           <button type="submit" class="absolute ml-4 py-2 px-4 right-0 font-bold text-gray-500 bg-yellow-300 hover:bg-opacity-60 hover:text-gray-600 hover:border-gray-600 rounded ring-2 ring-inset ring-gray-500">Sign Up</button>
         </div>
       </div>
