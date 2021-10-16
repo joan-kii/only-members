@@ -14,7 +14,10 @@
           <label for="password" class="mb-3 block">Password</label>
           <input type="password" id="password" name="password" required class="mt-0 block w-full px-0.5 bg-gray-100 rounded border-0 border-b-2 border-yellow-400 focus:outline-none focus:border-yellow-200">
         </div>
-        <div class="relative mb-12 w-3/4">
+        <div class="relative mb-12 w-3/4 flex">
+          <% if (error !== '') { %>
+            <p class="p-3 text-red-500 rounded ring ring-red-200"><%= error[0].msg %></p>
+          <% } %> 
           <button type="submit" class="absolute ml-4 py-2 px-4 right-0 font-bold text-gray-500 bg-yellow-300 hover:bg-opacity-60 hover:text-gray-600 hover:border-gray-600 rounded ring-2 ring-inset ring-gray-500">Log In</button>
         </div>
       </div>
