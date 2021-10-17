@@ -1,6 +1,9 @@
 {
   "name": "only-members",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.4.0"
+  },
   "description": "chat for members",
   "main": "app.js",
   "scripts": {
@@ -27,7 +30,6 @@
     "helmet": "^4.6.0",
     "http-errors": "^1.8.0",
     "mongoose": "^6.0.9",
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.13",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0"
