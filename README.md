@@ -20,3 +20,7 @@ Create and login with an account.<br>
   - passport
   - passport-local
   - http-errors
+
+## Styles
+  - Tailwindcss
+  
