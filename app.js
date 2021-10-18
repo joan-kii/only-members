@@ -20,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopo
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB Conection Error:'));
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.set('views', path.join(__dirname, 'views/pages'));
@@ -84,4 +85,4 @@ app.use(function(err, req, res, next) {
   res.render('index', {message: 'Page not found.'});
 });
 
-app.listen(3000, () => console.log('App listeninig on port 3000!'));
+app.listen(port, () => console.log(`App listeninig on port ${port}!`));
