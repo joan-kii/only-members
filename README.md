@@ -1,5 +1,3 @@
-## [Live demo](https://intense-bastion-57459.herokuapp.com/)
-
 ## Overview
 Create and login with an account.<br>
 - Viewers can: View posts partially.<br>
